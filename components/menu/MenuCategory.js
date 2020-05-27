@@ -1,14 +1,16 @@
 const MenuCategory = (props) => {
   return (
+    <div style={{
+      borderBottom: "1px solid rgb(204, 204, 204)",
+    }}>
     <nav
-      className="nav sticky-top"
+      className="nav sticky-top container text-uppercase"
       style={{
         backgroundColor: "white",
         whiteSpace: "nowrap",
         overflowX: "auto",
         fontSize: "13px",
-        padding: "14px 40px",
-        borderBottom: "1px solid rgb(204, 204, 204)",
+        padding: "14px 0px",
       }}
     >
       {props.categories
@@ -21,7 +23,7 @@ const MenuCategory = (props) => {
                 display: "inline-block",
                 float: "none",
                 color: "#171717",
-                fontWeight: "400",
+                fontWeight: "600",
               }}
             >
               {category}
@@ -37,6 +39,7 @@ const MenuCategory = (props) => {
         `}
       </style>
     </nav>
+    </div>
   );
 };
 

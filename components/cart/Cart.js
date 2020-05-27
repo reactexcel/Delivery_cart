@@ -56,7 +56,7 @@ const Cart = ({
             textAlign: "left",
             backgroundColor: "gainsboro",
             borderRadius: "15px 15px 0px 0px",
-            padding: "10px 20px",
+            padding: "20px 30px",
           }}
         >
           <span style={{ color: "#F08B2A", fontWeight: "600" }}>
@@ -69,14 +69,14 @@ const Cart = ({
             </button>
           )}
         </div>
-
+        <div className="px-4">
         {cart &&
           cart.map((item, index) => (
             <OrderItem key={item.itemName + index} item={item} />
           ))}
 
         {cart.length > 0 && (
-          <div style={{ padding: "20px" }}>
+          <div /* style={{ padding: "30px" }} */>
             {!isMenu && (
               <>
                 <h6 className="text-left">
@@ -99,8 +99,8 @@ const Cart = ({
               <span style={{ float: "right", fontWeight: "400" }}>${tax}</span>
             </h6>
             <h5 className="text-left">
-              <span style={{ fontWeight: "500" }}>Total</span>
-              <span style={{ fontWeight: "700", float: "right" }}>
+              <span style={{ fontWeight: "600" }}>Total</span>
+              <span style={{ fontWeight: "500", float: "right" }}>
                 ${total}
               </span>
             </h5>
@@ -117,7 +117,7 @@ const Cart = ({
                 backgroundColor: "#F08B2A",
                 border: "none",
               }}
-              className={isMobile ? "fixed-bottom" : "mb-3"}
+              className={isMobile ? "fixed-bottom" : "mt-2 mb-5"}
               onClick={checkEverything}
               size="lg"
               block={isMobile ? true : false}
@@ -176,6 +176,7 @@ const Cart = ({
             {showMessage}
           </p>
         )}
+        </div>
       </CardBody>
     </div>
   );

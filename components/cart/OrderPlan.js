@@ -8,7 +8,9 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { changeDay, changeTime } from "../../store/action/action";
-
+// import CalSVG from "../../assets/calendar.svg";
+import calendarImage from '../../assets/calendar.svg';
+import locationImage from '../../assets/location.svg';
 const OrderPlan = ({
   changeDay,
   changeTime,
@@ -50,7 +52,7 @@ const OrderPlan = ({
 
   return datetime ? (
     <>
-      <UncontrolledDropdown className="btn-group">
+      <UncontrolledDropdown className="btn-group mt-3">
         <DropdownToggle
           aria-expanded={false}
           aria-haspopup={true}
@@ -115,25 +117,16 @@ const OrderPlan = ({
       </UncontrolledDropdown>
     </>
   ) : (
-    <>
+    <div className="px-4">
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "10px",
+          padding: "20px 0px 10px",
         }}
       >
-        <div
-          style={{
-            fontSize: "1.5rem",
-            minWidth: "42px",
-            minHeight: "42px",
-          }}
-        >
-          <i className="fa fa-calendar fa-lg" />
-        </div>
-
+        <img src={calendarImage} width="36" height="36" />
         <div
           style={{
             padding: "0px 6px 0px 6px",
@@ -159,35 +152,31 @@ const OrderPlan = ({
           )}
         </div>
         <Button
+          className="text-lowercase"
           style={{
+            backgroundColor: "#EBEBEB",
+            color: "#262626",
+            borderColor: "#EBEBEB",
             borderRadius: "50px",
             minWidth: "110px",
+            fontWeight: 500
           }}
           onClick={handleDatetime}
         >
           Schedule
         </Button>
       </div>
-      <hr />
+      <hr className="mx-4" />
 
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "10px",
+          padding: "10px 0px 20px",
         }}
       >
-        <div
-          style={{
-            fontSize: "1.5rem",
-            minWidth: "42px",
-            minHeight: "42px",
-          }}
-        >
-          <i className="fa fa-map-marker fa-lg" />
-        </div>
-
+        <img src={locationImage} width="36" height="36" />
         <div
           style={{
             fontSize: "13px",
@@ -198,9 +187,14 @@ const OrderPlan = ({
           {delivery ? deliveryAddress : restaurantAddress}
         </div>
         <Button
+          className="text-lowercase"
           style={{
+            backgroundColor: "#EBEBEB",
+            color: "#262626",
+            borderColor: "#EBEBEB",
             borderRadius: "50px",
             minWidth: "110px",
+            fontWeight: 500
           }}
           onClick={() =>
             delivery
@@ -211,7 +205,7 @@ const OrderPlan = ({
           {delivery ? "Choose" : "Map"}
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

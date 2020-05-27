@@ -9,7 +9,7 @@ const OrderItem = ({ addToCart, updateCart, cart, item }) => {
 
   return (
     <div
-      className="row text-left"
+      className="text-left mt-3"
       style={{ cursor: "pointer" }}
       onClick={() => {
         setOpenModal(true);
@@ -18,51 +18,47 @@ const OrderItem = ({ addToCart, updateCart, cart, item }) => {
       onMouseEnter={() => setShowEdit(true)}
       onMouseLeave={() => setShowEdit(false)}
     >
-      <div className="col-md-12">
-        <div style={{ padding: "5px 20px" }}>
-          <Button
-            size="sm"
-            style={{
-              fontWeight: "400",
-              color: "#353535",
-              backgroundColor: "#CCCCCC",
-              borderRadius: "100px",
-              border: "none",
-            }}
-            className="btn-just-icon "
-          >
-            {item.quantity}
-          </Button>
-          <span
-            style={{
-              fontWeight: "500",
-              color: "#353535",
-              marginLeft: "10px",
-            }}
-          >
-            {item.itemName}
+      <div style={{ padding: "5px 0px" }}>
+        <Button
+          size="sm"
+          style={{
+            fontWeight: "400",
+            color: "#353535",
+            backgroundColor: "#CCCCCC",
+            borderRadius: "100px",
+            border: "none",
+          }}
+          className="btn-just-icon "
+        >
+          {item.quantity}
+        </Button>
+        <span
+          style={{
+            fontWeight: "600",
+            color: "#353535",
+            marginLeft: "10px",
+          }}
+        >
+          {item.itemName}
+        </span>
+        {showEdit ? (
+          <span style={{ float: "right", textDecoration: "underline" }}>
+            Edit Item
           </span>
-          {showEdit ? (
-            <span style={{ float: "right", textDecoration: "underline" }}>
-              Edit Item
-            </span>
-          ) : (
-            <span
-              style={{ fontWeight: "500", color: "#353535", float: "right" }}
-            >
-              ${item.price}
-            </span>
-          )}
-          {item.isDetailed
-            ? item.options.map((option) => (
-                <p key={option.name} style={{ padding: "2px 30px" }}>
-                  +{option.quantity} {option.name}
-                </p>
-              ))
-            : null}
-        </div>
-        <hr />
+        ) : (
+          <span style={{ fontWeight: "500", color: "#353535", float: "right" }}>
+            ${item.price}
+          </span>
+        )}
+        {item.isDetailed
+          ? item.options.map((option) => (
+              <p key={option.name} style={{ padding: "2px 0px" }}>
+                +{option.quantity} {option.name}
+              </p>
+            ))
+          : null}
       </div>
+      <hr className="" />
       {openModal && (
         <ItemModal
           addToCart={addToCart}

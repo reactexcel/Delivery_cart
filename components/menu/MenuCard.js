@@ -13,23 +13,24 @@ const MenuCard = ({ addToCart, item }) => {
               style={{
                 margin: "0",
                 fontSize: "16px",
-                fontWeight: "500",
+                fontWeight: "600",
                 color: "#353535",
               }}
             >
               {item.itemName}
             </h4>
-            <p style={{ fontSize: "14px", color: "#262626", marginTop: "5px" }}>
+            <p style={{ fontSize: "14px", color: "#262626", marginTop: "5px", opacity: "70%" }}>
               {item.details}
             </p>
           </div>
           <div className="col-md-6 col-6">
             <p
               style={{
-                fontWeight: "700",
+                fontWeight: "600",
                 margin: "0",
                 marginTop: "5px",
                 fontSize: "14px",
+                opacity: "40%"
               }}
             >
               ${item.price}

@@ -10,6 +10,7 @@ import {
 } from "../components/menu";
 import { addToCart, removeFromCart } from "../store/action/action";
 import { Button, Modal } from "reactstrap";
+import NavigationBar from "../layout/NavigationBar";
 
 const Home = (props) => {
   const [showDeliveryMessage, setShowDeliveryMessage] = React.useState(false);
@@ -51,24 +52,34 @@ const Home = (props) => {
 
   return (
     <Layout>
-      <MenuBanner restaurantData={props.restaurantData} />
+      <div style={{
+            background: "rgba(0, 0, 0, 0.6)",
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),url("https://res.cloudinary.com/dcw1i97ph/image/upload/ar_16:9,c_fill,e_sharpen,g_auto,h_847,w_1280/v1588466299/burgers-3203841_1280_imecfv.jpg")`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right",
+            backgroundSize: "cover",
+      }}>
+        <NavigationBar />
+        <MenuBanner restaurantData={props.restaurantData} />
+      </div>
       <div className="d-block d-sm-none d-lg-none">
         <DeliveryCard />
       </div>
       <MenuCategory categories={props.categories} />
-      <div className="container">
+      <div className="container position-relative pt-5">
         <div className="row text-center">
           <div className="col-md-8">
-            <h3
+            <p
               className="mb-4"
               style={{
-                color: "#323232",
+                fontSize: "28px",
+                color: "#262626",
                 fontWeight: "500",
                 textAlign: "left",
               }}
             >
-              Menu{" "}
-            </h3>
+              MENU{" "}
+            </p>
             <br />
             <DailySpecial />
             <Menu addToCart={addToCart} />
@@ -76,10 +87,9 @@ const Home = (props) => {
           <div className="col-md-4">
             <div
               className="d-none d-md-block d-lg-block d-xl-block"
-              style={{ marginTop: "25%" }}
             >
               <DeliveryCard />
-              <h3 style={{ margin: "50px 0px" }}>Your Cart</h3>
+              <h3 className="mt-5 mb-3">YOUR CART</h3>
               <Cart
                 isMenu={true}
                 getValue={addToCart}
