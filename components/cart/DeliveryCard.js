@@ -64,6 +64,7 @@ const DeliveryCard = ({
                 padding: "10px",
                 backgroundColor: delivery ? "#DCDCDC" : "#F08B2A",
                 borderColor: delivery ? "#DCDCDC" : "#F08B2A",
+                color: delivery ? "#888" : "#FFF"
               }}
               onClick={() => allowDelivery && handleMethod(!delivery)}
             >
@@ -85,6 +86,7 @@ const DeliveryCard = ({
                 padding: "10px",
                 backgroundColor: delivery ? "#F08B2A" : "#DCDCDC",
                 borderColor: delivery ? "#F08B2A" : "#DCDCDC",
+                color: delivery ? "#FFF" : "#888"
               }}
               onClick={() => allowPickup && handleMethod(!delivery)}
             >

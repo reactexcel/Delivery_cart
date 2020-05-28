@@ -19,7 +19,15 @@ const MenuCard = ({ addToCart, item }) => {
             >
               {item.itemName}
             </h4>
-            <p style={{ fontSize: "14px", color: "#262626", marginTop: "5px", opacity: "70%" }}>
+            <p
+              style={{
+                fontSize: "14px",
+                color: "#262626",
+                marginTop: "5px",
+                opacity: "55%",
+                fontWeight: "600",
+              }}
+            >
               {item.details}
             </p>
           </div>
@@ -30,7 +38,7 @@ const MenuCard = ({ addToCart, item }) => {
                 margin: "0",
                 marginTop: "5px",
                 fontSize: "14px",
-                opacity: "40%"
+                opacity: "40%",
               }}
             >
               ${item.price}

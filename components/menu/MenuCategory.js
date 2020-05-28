@@ -1,12 +1,13 @@
 const MenuCategory = (props) => {
   return (
-    <div style={{
+    <div 
+      className="sticky-top bg-white"
+    style={{
       borderBottom: "1px solid rgb(204, 204, 204)",
     }}>
     <nav
-      className="nav sticky-top container text-uppercase"
+      className="nav container text-uppercase"
       style={{
-        backgroundColor: "white",
         whiteSpace: "nowrap",
         overflowX: "auto",
         fontSize: "13px",

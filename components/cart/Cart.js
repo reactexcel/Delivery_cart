@@ -1,6 +1,7 @@
 import { connect } from "react-redux";
 import { Button, CardBody } from "reactstrap";
 import OrderItem from "./OrderItem";
+import supermarketImage from "../../assets/supermarket.svg";
 
 const Cart = ({
   cart,
@@ -51,6 +52,7 @@ const Cart = ({
       }}
     >
       <CardBody style={{ padding: "0px" }}>
+        {cart.length ? <>
         <div
           style={{
             textAlign: "left",
@@ -176,7 +178,13 @@ const Cart = ({
             {showMessage}
           </p>
         )}
-        </div>
+        </div></>
+          :
+            <div className="py-5">
+              <img src={supermarketImage} width="36" height="36" /> 
+              <p>Your cart is empty</p>
+            </div>
+        }
       </CardBody>
     </div>
   );

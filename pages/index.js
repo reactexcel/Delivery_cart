@@ -34,6 +34,22 @@ const Home = (props) => {
     computeCart();
   }, [props.cart]);
 
+  // React.useLayoutEffect(() => {
+  //   const handleScroll = () => {
+  //     if (wait) {
+  //       if (throttleTimeout === null) {
+  //         throttleTimeout = setTimeout(callBack, wait)
+  //       }
+  //     } else {
+  //       callBack()
+  //     }
+  //   }
+
+  //   window.addEventListener('scroll', handleScroll)
+
+  //   return () => window.removeEventListener('scroll', handleScroll)
+  // }, deps)
+
   const addToCart = (value) => {
     props.addToCart(value, props.cart);
   };
@@ -68,15 +84,10 @@ const Home = (props) => {
       <MenuCategory categories={props.categories} />
       <div className="container position-relative pt-5">
         <div className="row text-center">
-          <div className="col-md-8">
+          <div className="col-md-7">
             <p
-              className="mb-4"
-              style={{
-                fontSize: "28px",
-                color: "#262626",
-                fontWeight: "500",
-                textAlign: "left",
-              }}
+              className="mb-4 text-left"
+              style={{ fontSize: "28px" }}
             >
               MENU{" "}
             </p>
@@ -84,7 +95,7 @@ const Home = (props) => {
             <DailySpecial />
             <Menu addToCart={addToCart} />
           </div>
-          <div className="col-md-4">
+          <div className="offset-md-1 col-md-4">
             <div
               className="d-none d-md-block d-lg-block d-xl-block"
             >

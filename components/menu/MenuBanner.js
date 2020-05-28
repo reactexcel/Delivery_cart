@@ -42,7 +42,7 @@ const Banner = ({
                 <SocialIcon icon={pinterestImage} />
               </div>
             </div>
-            <p
+            <div
               style={{
                 fontWeight: "500",
                 color: "#262626",
@@ -51,7 +51,7 @@ const Banner = ({
               }}
             >
               <Descriptor description={description} />
-            </p>
+            </div>
             <p style={{ fontWeight: "400" }}>
               <span
                 style={{ color: "orange" }}
@@ -96,9 +96,9 @@ const Banner = ({
       </div>
       <div style={{ padding: "10px" }} className="d-block d-sm-none d-lg-none">
         <h3 style={{ margin: "0", fontWeight: "700" }}>{name}</h3>
-        <p style={{ fontWeight: "400" }}>
+        <div style={{ fontWeight: "400" }}>
           <Descriptor description={description} />
-        </p>
+        </div>
         <p style={{ fontWeight: "400" }}>
           {estimatedDeliveryTime} . {rating} . {deliveryFee}
         </p>

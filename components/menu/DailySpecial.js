@@ -8,17 +8,17 @@ const DailySpecial = () => {
         textAlign: "left",
       }}
     >
-      <div className="col-4" style={{ padding: "20px" }}>
+      <div className="col-5" style={{ padding: "20px" }}>
         <h3 className="m-0" style={{ fontWeight: "400" }}>Delivery Special</h3>
         <p className="mt-2" style={{ fontWeight: "600" }}>
           order now and we will give you free delivery to the St Clair area
         </p>
       </div>
-      <div className="offset-1 col-6">
+      <div className="col-7">
         <h1
           style={{
             margin: 0,
-            margin: "10% 0px",
+            margin: "13% 0px",
             fontWeight: "700",
           }}
         >

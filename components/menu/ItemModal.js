@@ -1,5 +1,7 @@
 import { Alert, Button, FormGroup, Input, Modal } from "reactstrap";
 import ItemSelection from "./ItemSelection";
+import closeImage from "../../assets/close.svg";
+import PlusMinusButton from "../generic/PlusMinusButton";
 
 const ItemModal = ({
   addToCart,
@@ -86,8 +88,27 @@ const ItemModal = ({
     }
   };
 
+  const extras = [
+    {
+      name: "Pickles",
+      price: "$0.50",
+    },
+    {
+      name: "American Cheese",
+      price: "$0.50",
+    },
+    {
+      name: "Meat",
+      price: "$0.50",
+    },
+  ];
+
   return (
-    <Modal isOpen={openModal} toggle={() => setOpenModal(false)}>
+    <Modal
+      isOpen={openModal}
+      toggle={() => setOpenModal(false)}
+      style={{ borderRadius: "20px" }}
+    >
       <div
         className="modal-header"
         style={{
@@ -96,42 +117,86 @@ const ItemModal = ({
           backgroundRepeat: "no-repeat",
           backgroundPosition: "right",
           position: "relative",
-          height: "33vh",
+          height: "200px",
+          borderRadius: "20px 20px 0 0",
           backgroundSize: "cover",
         }}
       >
         <button
           className="close"
-          style={{ backgroundColor: "white" }}
+          style={{ backgroundColor: "rgba(255, 255, 255)" }}
           onClick={() => setOpenModal(false)}
         >
-          <span aria-hidden={true}>X</span>
+          {/* <span aria-hidden={true}>X</span> */}
+          <img src={closeImage} width="10" height="10" />
         </button>
       </div>
 
       <div className="modal-body">
-        <h3 className="text-center">{item.itemName}</h3>
-        <p style={{ padding: "0px 20px" }}>{item.details}</p>
+        <div className="text-center modal-block mb-4">
+          <h3>{item.itemName}</h3>
+          <p
+            style={{
+              fontSize: "14px",
+              color: "#262626",
+              marginTop: "5px",
+              opacity: "55%",
+              fontWeight: "600",
+            }}
+          >
+            {item.details}
+          </p>
+        </div>
+        {/* <div
+          className="modal-block bg-eee"
+        >
+          <h4 className="m-0">Choose Four Skewers</h4>
+          <div
+            style={{
+              fontSize: "14px",
+              color: "#262626",
+              marginTop: "5px",
+              opacity: "55%",
+              fontWeight: "600",
+            }}
+          >
+            choose exaclty 4
+          </div>
+        </div> */}
         {item.selections
           ? item.selections.map((selection, key) => (
               <div key={key}>
-                <div className="row mb-4">
+                <div
+                  className="modal-block mb-4"
+                  style={{
+                    backgroundColor: "#EBEBEB",
+                  }}
+                >
                   <div
                     className="col"
                     style={{
-                      backgroundColor: "#EBEBEB",
-                      padding: "20px",
+                      padding: "40px 0",
                     }}
                   >
-                    <h3 style={{ fontWeight: "400" }}>
+                    <h4 className="m-0 font-weight-bold">
                       {selection.selectOptionText}
-                    </h3>
-                    <p>Choose Exactly {selection.requiredQuantity}</p>
+                    </h4>
+                    <p
+                      style={{
+                        fontSize: "14px",
+                        color: "#262626",
+                        marginTop: "5px",
+                        opacity: "55%",
+                        fontWeight: "600",
+                      }}
+                    >
+                      Choose Exactly {selection.requiredQuantity}
+                    </p>
                   </div>
                 </div>
                 <div
-                  className="row mb-4"
-                  style={{ paddingLeft: "3rem", paddingRight: "3rem" }}
+                  className="modal-block mb-4 d-flex flex-wrap"
+                  // style={{ paddingLeft: "3rem", paddingRight: "3rem" }}
                 >
                   {selection.options.map((option) => (
                     <ItemSelection
@@ -145,66 +210,77 @@ const ItemModal = ({
               </div>
             ))
           : null}
-        <FormGroup>
+        <div className="modal-block">
           <label htmlFor="details">
             {" "}
-            <h4>Special Instructions</h4>
+            <h4 className="font-weight-bold">Extras</h4>
+          </label>
+          <hr />
+          <div className="d-flex flex-wrap modal-block">
+            {extras.map((extra, i) => (
+              <div className="w-50" key={i}>
+                <div className="input-checkbox-container">
+                  <input
+                    // id="details"
+                    checked
+                    className="custom"
+                    type="checkbox"
+                    // rows="3"
+                    // style={{ borderRadius: "25px", padding: "10px" }}
+                  />
+                  <span class="checkmark"></span>
+                </div>
+
+                <div className="wrap-in-between">
+                  <div className="line-in-between">
+                    <div className="text-in-between font-weight-bold">
+                      {extra.name}
+                    </div>
+                    <div className="text-in-between">{extra.price}</div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <FormGroup className="modal-block">
+          <label htmlFor="details">
+            <h4 className="mb-3 font-weight-bold">Special Instructions</h4>
           </label>
           <Input
             id="details"
             type="textarea"
-            rows="3"
-            style={{ borderRadius: "25px", padding: "10px" }}
+            rows="5"
+            style={{ borderRadius: "20px", padding: "10px" }}
           ></Input>
         </FormGroup>
-        <hr />
       </div>
-      <div className="row" style={{ margin: " 0px 7px" }}>
-        <div className="col">
-          <Button
-            style={{ margin: "0px 5px" }}
-            color="info"
-            className="btn-just-icon"
-            size="sm"
-            onClick={() => modifyQuantity("+")}
-          >
-            {" "}
-            <i className="fa fa-plus"></i>{" "}
-          </Button>
-          <span style={{ fontSize: "1.2rem", fontWeight: "500" }}>
-            {quantity}
-          </span>
-          <Button
-            style={{ margin: "0px 7px" }}
-            color="info"
-            className="btn-just-icon"
-            size="sm"
-            onClick={() => modifyQuantity("-")}
-          >
-            {" "}
-            <i className="fa fa-minus"></i>
-          </Button>{" "}
-          <Button
-            style={{
-              margin: "10px 20px",
-              borderRadius: "100px",
-              padding: "10px 30px",
-              backgroundColor: "#F08B2A",
-              border: "none",
-            }}
-            type="button"
-            onClick={() => {
-              checkBeforeAddingToCart();
-            }}
-          >
-            {updateOrder ? "Update Order" : `Add To Cart ( $ ${total} )`}
-          </Button>
-          {warning && (
-            <Alert color="danger">
-              Choose the right amount of items for each selection.
-            </Alert>
-          )}
-        </div>
+      <div className="d-flex align-items-center modal-block mb-5">
+        <PlusMinusButton type="minus" onClick={() => modifyQuantity("-")} />
+        <span style={{ fontSize: "1.2rem", fontWeight: "600" }}>
+          {quantity}
+        </span>
+        <PlusMinusButton type="plus" onClick={() => modifyQuantity("+")} />
+        <Button
+          style={{
+            margin: "10px 20px",
+            borderRadius: "100px",
+            padding: "10px 40px",
+            backgroundColor: "#F08B2A",
+            border: "none",
+          }}
+          type="button"
+          onClick={() => {
+            checkBeforeAddingToCart();
+          }}
+        >
+          {updateOrder ? "Update Order" : `Add To Cart ( $ ${total} )`}
+        </Button>
+        {warning && (
+          <Alert color="danger">
+            Choose the right amount of items for each selection.
+          </Alert>
+        )}
       </div>
     </Modal>
   );

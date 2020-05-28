@@ -9,8 +9,9 @@ import {
 } from "reactstrap";
 import { changeDay, changeTime } from "../../store/action/action";
 // import CalSVG from "../../assets/calendar.svg";
-import calendarImage from '../../assets/calendar.svg';
-import locationImage from '../../assets/location.svg';
+import calendarImage from "../../assets/calendar.svg";
+import locationImage from "../../assets/location.svg";
+import clockImage from "../../assets/clock.svg";
 const OrderPlan = ({
   changeDay,
   changeTime,
@@ -52,7 +53,11 @@ const OrderPlan = ({
 
   return datetime ? (
     <>
-      <UncontrolledDropdown className="btn-group mt-3">
+      <div className="align-items-center d-flex justify-content-center mt-3" style={{ color: "#F08B2A", fontSize: "20px" }}>
+        <img src={clockImage} width="20" height="20" className="mr-2" />
+        ASAP
+      </div>
+      <UncontrolledDropdown className="btn-group mt-2">
         <DropdownToggle
           aria-expanded={false}
           aria-haspopup={true}
@@ -64,12 +69,12 @@ const OrderPlan = ({
           style={{
             backgroundColor: "#EBEBEB",
             borderRadius: "100px",
-            color: "#262626",
-            fontSize: "13px",
+            color: "#888",
+            fontSize: "14px",
             fontWeight: "400",
             borderColor: "#EBEBEB",
-            padding: "5px 5vh",
-            minWidth: "200px",
+            padding: "10px 20px",
+            minWidth: "220px",
           }}
         >
           {day ? day : "Select Day"}
@@ -94,12 +99,12 @@ const OrderPlan = ({
           style={{
             backgroundColor: "#EBEBEB",
             borderRadius: "100px",
-            color: "#262626",
-            fontSize: "13px",
+            color: "#888",
+            fontSize: "14px",
             fontWeight: "400",
             borderColor: "#EBEBEB",
-            padding: "5px 5vh",
-            minWidth: "200px",
+            padding: "10px 20px",
+            minWidth: "220px",
           }}
         >
           {time ? time : "Select Time"}
@@ -159,7 +164,7 @@ const OrderPlan = ({
             borderColor: "#EBEBEB",
             borderRadius: "50px",
             minWidth: "110px",
-            fontWeight: 500
+            fontWeight: 500,
           }}
           onClick={handleDatetime}
         >
@@ -194,7 +199,7 @@ const OrderPlan = ({
             borderColor: "#EBEBEB",
             borderRadius: "50px",
             minWidth: "110px",
-            fontWeight: 500
+            fontWeight: 500,
           }}
           onClick={() =>
             delivery

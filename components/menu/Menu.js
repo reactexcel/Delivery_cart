@@ -9,7 +9,7 @@ const Menu = ({ addToCart, payload }) => {
             <div key={index} className="row">
               <h3
                 className="col-12 mb-4 text-left"
-                style={{ fontWeight: "500", color: "#323232" }}
+                // style={{ fontWeight: "500", color: "#323232" }}
                 id={`${category.category}`}
               >
                 {" "}
