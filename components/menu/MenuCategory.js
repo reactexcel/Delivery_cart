@@ -15,7 +15,7 @@ const MenuCategory = (props) => {
       }}
     >
       {props.categories
-        ? props.categories.map((category) => (
+        ? props.categories.map((category, i) => (
             <a
               key={category}
               className="nav-link"
@@ -25,6 +25,8 @@ const MenuCategory = (props) => {
                 float: "none",
                 color: "#171717",
                 fontWeight: "600",
+                textDecoration: props.selectedMenu == i ? "underline": "none",
+                // boxShadow: props.selectedMenu == i ? "0 2px": "none"
               }}
             >
               {category}
