@@ -8,7 +8,10 @@ import {
   UncontrolledDropdown,
 } from "reactstrap";
 import { changeDay, changeTime } from "../../store/action/action";
-
+// import CalSVG from "../../assets/calendar.svg";
+import calendarImage from "../../assets/calendar.svg";
+import locationImage from "../../assets/location.svg";
+import clockImage from "../../assets/clock.svg";
 const OrderPlan = ({
   changeDay,
   changeTime,
@@ -50,7 +53,11 @@ const OrderPlan = ({
 
   return datetime ? (
     <>
-      <UncontrolledDropdown className="btn-group">
+      <div className="align-items-center d-flex justify-content-center mt-3" style={{ color: "#F08B2A", fontSize: "20px" }}>
+        <img src={clockImage} width="20" height="20" className="mr-2" />
+        ASAP
+      </div>
+      <UncontrolledDropdown className="btn-group mt-2">
         <DropdownToggle
           aria-expanded={false}
           aria-haspopup={true}
@@ -62,12 +69,12 @@ const OrderPlan = ({
           style={{
             backgroundColor: "#EBEBEB",
             borderRadius: "100px",
-            color: "#262626",
-            fontSize: "13px",
+            color: "#888",
+            fontSize: "14px",
             fontWeight: "400",
             borderColor: "#EBEBEB",
-            padding: "5px 5vh",
-            minWidth: "200px",
+            padding: "10px 20px",
+            minWidth: "220px",
           }}
         >
           {day ? day : "Select Day"}
@@ -92,12 +99,12 @@ const OrderPlan = ({
           style={{
             backgroundColor: "#EBEBEB",
             borderRadius: "100px",
-            color: "#262626",
-            fontSize: "13px",
+            color: "#888",
+            fontSize: "14px",
             fontWeight: "400",
             borderColor: "#EBEBEB",
-            padding: "5px 5vh",
-            minWidth: "200px",
+            padding: "10px 20px",
+            minWidth: "220px",
           }}
         >
           {time ? time : "Select Time"}
@@ -115,25 +122,16 @@ const OrderPlan = ({
       </UncontrolledDropdown>
     </>
   ) : (
-    <>
+    <div className="px-4">
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "10px",
+          padding: "20px 0px 10px",
         }}
       >
-        <div
-          style={{
-            fontSize: "1.5rem",
-            minWidth: "42px",
-            minHeight: "42px",
-          }}
-        >
-          <i className="fa fa-calendar fa-lg" />
-        </div>
-
+        <img src={calendarImage} width="36" height="36" />
         <div
           style={{
             padding: "0px 6px 0px 6px",
@@ -159,35 +157,31 @@ const OrderPlan = ({
           )}
         </div>
         <Button
+          className="text-lowercase"
           style={{
+            backgroundColor: "#EBEBEB",
+            color: "#262626",
+            borderColor: "#EBEBEB",
             borderRadius: "50px",
             minWidth: "110px",
+            fontWeight: 500,
           }}
           onClick={handleDatetime}
         >
           Schedule
         </Button>
       </div>
-      <hr />
+      <hr className="mx-4" />
 
       <div
         style={{
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
-          padding: "10px",
+          padding: "10px 0px 20px",
         }}
       >
-        <div
-          style={{
-            fontSize: "1.5rem",
-            minWidth: "42px",
-            minHeight: "42px",
-          }}
-        >
-          <i className="fa fa-map-marker fa-lg" />
-        </div>
-
+        <img src={locationImage} width="36" height="36" />
         <div
           style={{
             fontSize: "13px",
@@ -198,9 +192,14 @@ const OrderPlan = ({
           {delivery ? deliveryAddress : restaurantAddress}
         </div>
         <Button
+          className="text-lowercase"
           style={{
+            backgroundColor: "#EBEBEB",
+            color: "#262626",
+            borderColor: "#EBEBEB",
             borderRadius: "50px",
             minWidth: "110px",
+            fontWeight: 500,
           }}
           onClick={() =>
             delivery
@@ -211,7 +210,7 @@ const OrderPlan = ({
           {delivery ? "Choose" : "Map"}
         </Button>
       </div>
-    </>
+    </div>
   );
 };
 

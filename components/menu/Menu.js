@@ -3,13 +3,13 @@ import MenuCard from "./MenuCard";
 
 const Menu = ({ addToCart, payload }) => {
   return (
-    <div className="mb-5">
+    <div className="mb-5" style={{marginTop: 180 }}>
       {payload
         ? payload.map((category, index) => (
             <div key={index} className="row">
               <h3
-                className=" col-md-8 col-12 mb-4 text-left"
-                style={{ fontWeight: "500", color: "#323232" }}
+                className="col-12 mb-4 text-left"
+                // style={{ fontWeight: "500", color: "#323232" }}
                 id={`${category.category}`}
               >
                 {" "}

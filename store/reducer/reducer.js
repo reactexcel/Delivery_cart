@@ -13,7 +13,13 @@ const INITIAL_STATE = {
     name: "Souvlaki Express",
     number: "+1 416-840-2754",
     address: "82 Ontario St, Toronto, ON M5A 1P8",
-    type: "$ . Greek-Mediterranean . Home-Made . Salad",
+    description: {
+      currency: "$",
+      location: "Greek-Mediterranean",
+      type: "Home-Made",
+      food: "Salad"
+    },
+    // type: "$ . Greek-Mediterranean . Home-Made . Salad",
     estimatedDeliveryTime: "25-35 Minutes",
     deliveryFee: 4.99,
     rating: "4.3 (64)",

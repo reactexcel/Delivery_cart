@@ -1,18 +1,21 @@
 const MenuCategory = (props) => {
   return (
+    <div 
+      className="sticky-top bg-white"
+    style={{
+      borderBottom: "1px solid rgb(204, 204, 204)",
+    }}>
     <nav
-      className="nav sticky-top"
+      className="nav container text-uppercase"
       style={{
-        backgroundColor: "white",
         whiteSpace: "nowrap",
         overflowX: "auto",
         fontSize: "13px",
-        padding: "14px 40px",
-        borderBottom: "1px solid rgb(204, 204, 204)",
+        padding: "14px 0px",
       }}
     >
       {props.categories
-        ? props.categories.map((category) => (
+        ? props.categories.map((category, i) => (
             <a
               key={category}
               className="nav-link"
@@ -21,7 +24,9 @@ const MenuCategory = (props) => {
                 display: "inline-block",
                 float: "none",
                 color: "#171717",
-                fontWeight: "400",
+                fontWeight: "600",
+                textDecoration: props.selectedMenu == i ? "underline": "none",
+                // boxShadow: props.selectedMenu == i ? "0 2px": "none"
               }}
             >
               {category}
@@ -37,6 +42,7 @@ const MenuCategory = (props) => {
         `}
       </style>
     </nav>
+    </div>
   );
 };
 

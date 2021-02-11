@@ -6,6 +6,7 @@ import "../assets/css/bootstrap.min.css";
 import "../assets/css/paper-kit.css";
 import "../assets/demo/demo.css";
 import "../assets/demo/react-demo.css";
+import "../assets/css/custom.css";
 
 class MyApp extends App {
   static getInitialProps = async ({ Component, ctx }) => ({

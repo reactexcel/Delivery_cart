@@ -2,15 +2,16 @@ import Link from "next/link";
 
 const NavigationBar = () => (
   <>
-    <nav className="navbar navbar-expand navbar-light d-none d-md-block d-lg-block d-xl-block">
+    <nav className="navbar navbar-expand navbar-light d-none d-md-block d-lg-block d-xl-block bg-transparent shadow-none">
       <div className="container">
         <Link href="/">
-          <a className="navbar-brand" href="#">
+          <a className="logo-text text-lowercase" href="#">
             <img
+              className="mr-2"
               src="https://res.cloudinary.com/dcw1i97ph/image/upload/v1588466811/lobo-100h-100w_wzbabd.png"
               style={{ height: "55px", width: "80px" }}
             />{" "}
-            menu.page
+            menu<span className="dot">.</span>page
           </a>
         </Link>
         <div className="collapse navbar-collapse">
@@ -41,7 +42,7 @@ const NavigationBar = () => (
           style={{
             width: "100%",
             textAlign: "center",
-            fontFamily: "Montserrat",
+            fontFamily: "Montserrat Light",
             fontSize: "26px",
             fontWeight: "500",
           }}

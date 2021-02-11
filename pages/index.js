@@ -10,12 +10,51 @@ import {
 } from "../components/menu";
 import { addToCart, removeFromCart } from "../store/action/action";
 import { Button, Modal } from "reactstrap";
+import NavigationBar from "../layout/NavigationBar";
 
 const Home = (props) => {
   const [showDeliveryMessage, setShowDeliveryMessage] = React.useState(false);
   const [showMobileCart, setShowMobileCart] = React.useState(false);
   const [total, setTotal] = React.useState(0);
   const [items, setItems] = React.useState(0);
+  const [selectedMenu, setSelectedMenu] = React.useState(-1);
+  const wait = 1000;
+  let throttleTimeout = null;
+  const isBrowser = typeof window !== `undefined`
+  const [offsets,setOffsets] = React.useState([]);
+  const callBack = () => {
+    const currPos = getScrollPosition({ element })
+    let foundIndex = offsets.findIndex((offset)=> offset > Math.abs(currPos.y)) 
+    if(foundIndex < 0 ) {
+      foundIndex = offsets.length -1;
+    } else {
+      foundIndex = foundIndex - 1;
+    }
+    setSelectedMenu(foundIndex);
+    throttleTimeout = null
+  }
+  const element = React.useRef(null);
+
+  React.useEffect(() => {
+    const arr = [];
+    props.categories.forEach((v,i)=> {
+      const elementOffset = document.getElementById(v).offsetTop;
+      arr.push(elementOffset);
+    })
+    setOffsets(arr);
+  }, []);
+
+
+  function getScrollPosition({ element, useWindow }) {
+    if (!isBrowser) return { x: 0, y: 0 }
+  
+    const target = element ? element.current : document.body    
+    const position = target.getBoundingClientRect()
+  
+    return useWindow
+      ? { x: window.scrollX, y: window.scrollY }
+      : { x: position.left, y: position.top }
+  }
 
   const computeCart = () => {
     const subtotal = Number(
@@ -32,6 +71,22 @@ const Home = (props) => {
   React.useEffect(() => {
     computeCart();
   }, [props.cart]);
+
+  React.useLayoutEffect(() => {
+    const handleScroll = () => {
+      if (wait) {
+        if (throttleTimeout === null) {
+          throttleTimeout = setTimeout(callBack, wait)
+        }
+      } else {
+        callBack()
+      }
+    }
+
+    window.addEventListener('scroll', handleScroll)
+
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
 
   const addToCart = (value) => {
     props.addToCart(value, props.cart);
@@ -51,35 +106,39 @@ const Home = (props) => {
 
   return (
     <Layout>
-      <MenuBanner restaurantData={props.restaurantData} />
+      <div ref={element} style={{
+            background: "rgba(0, 0, 0, 0.6)",
+            backgroundImage: `linear-gradient(rgba(255,255,255,0.7), rgba(255,255,255,0.7)),url("https://res.cloudinary.com/dcw1i97ph/image/upload/ar_16:9,c_fill,e_sharpen,g_auto,h_847,w_1280/v1588466299/burgers-3203841_1280_imecfv.jpg")`,
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right",
+            backgroundSize: "cover",
+      }}>
+        <NavigationBar />
+        <MenuBanner restaurantData={props.restaurantData} />
+      </div>
       <div className="d-block d-sm-none d-lg-none">
         <DeliveryCard />
       </div>
-      <MenuCategory categories={props.categories} />
-      <div className="container">
+      <MenuCategory selectedMenu={selectedMenu} categories={props.categories} />
+      <div className="container position-relative pt-5">
         <div className="row text-center">
-          <div className="col-md-8">
-            <h3
-              className="mb-4"
-              style={{
-                color: "#323232",
-                fontWeight: "500",
-                textAlign: "left",
-              }}
+          <div className="col-md-7">
+            <p
+              className="mb-4 text-left"
+              style={{ fontSize: "28px" }}
             >
-              Menu{" "}
-            </h3>
+              MENU{" "}
+            </p>
             <br />
             <DailySpecial />
             <Menu addToCart={addToCart} />
           </div>
-          <div className="col-md-4">
+          <div className="offset-md-1 col-md-4">
             <div
               className="d-none d-md-block d-lg-block d-xl-block"
-              style={{ marginTop: "25%" }}
             >
               <DeliveryCard />
-              <h3 style={{ margin: "50px 0px" }}>Your Cart</h3>
+              <h3 className="mt-5 mb-3">YOUR CART</h3>
               <Cart
                 isMenu={true}
                 getValue={addToCart}

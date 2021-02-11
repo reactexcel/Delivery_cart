@@ -41,13 +41,15 @@ const DeliveryCard = ({
   };
 
   return (
+    <>
+    <p className="mb-3" style={{fontSize: "28px"}}>ORDER FOR</p>
     <div
       style={{
         width: "100%",
         display: "flex",
         border: "1px solid",
         borderColor: "#DCDCDC",
-        borderRadius: "1.6em",
+        borderRadius: "2em",
       }}
     >
       <CardBody className="text-center" style={{ padding: "0px" }}>
@@ -55,11 +57,14 @@ const DeliveryCard = ({
           {allowPickup && (
             <Button
               style={{
+                fontSize: "16px",
+                fontWeight: 300,
                 width: allowDelivery ? "50%" : "100%",
                 borderRadius: "100px 0px 0px 100px",
                 padding: "10px",
-                backgroundColor: delivery ? "" : "#F08B2A",
-                borderColor: delivery ? "" : "#F08B2A",
+                backgroundColor: delivery ? "#DCDCDC" : "#F08B2A",
+                borderColor: delivery ? "#DCDCDC" : "#F08B2A",
+                color: delivery ? "#888" : "#FFF"
               }}
               onClick={() => allowDelivery && handleMethod(!delivery)}
             >
@@ -74,11 +79,14 @@ const DeliveryCard = ({
           {allowDelivery && (
             <Button
               style={{
+                fontSize: "16px",
+                fontWeight: 300,
                 width: allowPickup ? "50%" : "100%",
                 borderRadius: "0px 100px 100px 0px",
                 padding: "10px",
-                backgroundColor: delivery ? "#F08B2A" : "",
-                borderColor: delivery ? "#F08B2A" : "",
+                backgroundColor: delivery ? "#F08B2A" : "#DCDCDC",
+                borderColor: delivery ? "#F08B2A" : "#DCDCDC",
+                color: delivery ? "#FFF" : "#888"
               }}
               onClick={() => allowPickup && handleMethod(!delivery)}
             >
@@ -108,6 +116,7 @@ const DeliveryCard = ({
         )}
       </CardBody>
     </div>
+    </>
   );
 };
 

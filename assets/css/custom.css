@@ -1,0 +1,193 @@
+.logo-text {
+  font-size: 19px;
+  text-shadow: 0 0 1px #444;
+  color: transparent;
+  font-weight: 600;
+  margin: 5px 0px;
+  padding: 20px 15px;
+}
+.logo-text:hover {
+  color: inherit;
+}
+.logo-text .dot {
+  color: rgb(240, 139, 42);
+}
+
+.btn-generic, .btn-generic:active, .btn-generic:hover {
+  background-color: #eee;
+  border-color: #eee;
+}
+.social-logo {
+  margin-left: 10px;
+  width: 20px;
+  height: 20px;
+}
+
+.dot-separator {
+  color: #555;
+  font-size: 29px;
+  padding: 0 5px;
+  margin-top: -19px;
+}
+
+.menu-desc {
+  font-weight: 600;
+  color: #555555 !important;
+}
+
+@media (min-width: 768px) {
+  .float-absolute-right {
+    right: calc((720px - 100vw) / 2);
+  }
+}
+@media (min-width: 992px) {
+  .float-absolute-right {
+    right: calc((960px - 100vw) / 2);
+  }
+}
+@media (min-width: 1200px) {
+  .float-absolute-right {
+    right: calc((1140px - 100vw) / 2);
+  }
+}
+
+@media (min-width: 768px) {
+  .float-absolute-left {
+    left: calc((720px - 100vw) / 2);
+    padding-left: calc((100vw - 700px) / 2);
+  }
+}
+@media (min-width: 992px) {
+  .float-absolute-left {
+    left: calc((960px - 100vw) / 2);
+    padding-left: calc((100vw - 940px) / 2);
+  }
+}
+@media (min-width: 1200px) {
+  .float-absolute-left {
+    left: calc((1140px - 100vw) / 2);
+    padding-left: calc((100vw - 1120px) / 2);
+  }
+}
+
+@media (min-width: 992px) {
+  .modal-dialog {
+    max-width: 750px ;
+  }
+}
+
+.modal-content {
+  border-radius: 20px;
+}
+
+.modal-header .close {
+  background-color: white;
+  opacity: 1;
+  padding: 3px 10px;
+  margin: 0;
+}
+
+.modal-body {
+  padding: 0;
+}
+
+.modal-block {
+  padding: 0 40px;
+}
+
+.wrap-in-between {
+  text-align: center;
+  margin: 20px 20px 20px 0;
+}
+
+.line-in-between {
+  display: flex;
+  justify-content: space-between;
+  padding: 0;
+  width: 90%;
+  border-top: 1px solid #eee;
+  height: 1px;
+  line-height: 0.1em;
+}
+
+.text-in-between {
+  background: white;
+  position: relative;
+  top: -5px;
+  height: 20px;
+}
+
+.text-in-between:first-child {
+  padding-right: 7px;
+}
+
+.text-in-between:last-child {
+  padding-left: 7px;
+}
+
+.fa-plus, .fa-minus {
+  color: black;
+}
+
+.input-checkbox-container {
+  display: block;
+  position: relative;
+  padding-left: 35px;
+  margin-left: -35px;
+  cursor: pointer;
+  font-size: 22px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 25px;
+  width: 25px;
+  background-color: #eee;
+}
+
+.input-checkbox-container input:checked ~ .checkmark {
+  background-color: #eee;
+}
+
+.input-checkbox-container:hover input ~ .checkmark {
+  background-color: #ccc;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark::after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+input:checked ~ .checkmark::after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.checkmark::after {
+  left: 9px;
+  top: 5px;
+  width: 7px;
+  height: 15px;
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
